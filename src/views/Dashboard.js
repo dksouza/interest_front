@@ -86,7 +86,8 @@ const Dashboard = (props) => {
                       <tbody>
                         {data.map((item, index) => (
                         <tr key={index}>
-                          <td>
+                          {/*
+                            <td>
                             <FormGroup check>
                               <Label check>
                                 <Input defaultValue="" type="checkbox" />
@@ -96,6 +97,8 @@ const Dashboard = (props) => {
                               </Label>
                             </FormGroup>
                           </td>
+                          */}
+                          <td></td>
                           <td>
                         <p className="title" onClick={() => getSuggestions(item)} style={{cursor: "pointer"}}>
                           {item.name}
@@ -112,7 +115,8 @@ const Dashboard = (props) => {
                               title=""
                               type="button"
                             >
-                              Facebook
+                              <a href={`https://www.facebook.com/search/top?q=${item.name}`} target="_blank">Facebook</a>
+                              
                             </Button>
                             <Button
                               color="link"
@@ -120,7 +124,7 @@ const Dashboard = (props) => {
                               title=""
                               type="button"
                             >
-                              Google
+                              <a href={`https://www.google.com/search?q=${item.name}`} target="_blank">Google</a>
                             </Button>
                           </td>
                         </tr>
