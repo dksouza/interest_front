@@ -26,7 +26,7 @@ const Dashboard = (props) => {
   const [loading, setLoading] = useState(false);
   const [text, setText] = useState("");
   const [textSuggestions, setTextSuggestions] = useState("");
-  const [isModal, isSetModal] = useState(true);
+  const [isModal, isSetModal] = useState(false);
 
   const getInterests = async () => {
     setLoading(true)
@@ -150,16 +150,36 @@ const Dashboard = (props) => {
                           <tr>
                             <td>Nome</td>
                             <td>Tamanho audiência</td>
+                            <td className="td-actions text-right">Pesquisar palavra</td>
                           </tr>
                         </thead>
                         <tbody>
-                          {dataSuggestions.map(item => (
+                          {dataSuggestions.map((item, index) => (
                           <tr>
                             <td>
                               {item.name}
                             </td>
                             <td>
                               {item.audience_size}
+                            </td>
+                            <td className="td-actions text-right">
+                              <Button
+                              color="link"
+                              id={`tooltip${index}`}
+                              title=""
+                              type="button"
+                            >
+                              <a href={`https://www.facebook.com/search/top?q=${item.name}`} target="_blank">Facebook</a>
+                              
+                            </Button>
+                            <Button
+                              color="link"
+                              id={`tooltip${index}`}
+                              title=""
+                              type="button"
+                            >
+                              <a href={`https://www.google.com/search?q=${item.name}`} target="_blank">Google</a>
+                            </Button>
                             </td>
                           </tr>
                           ))}

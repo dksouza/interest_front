@@ -15,13 +15,6 @@ var routes = [
     icon: "tim-icons icon-chart-pie-36",
     component: Dashboard,
     layout: "/admin"
-  },
-  {
-    path: "/icons",
-    name: "Icons",
-    icon: "tim-icons icon-chart-pie-36",
-    component: Icons,
-    layout: "/admin"
   }
 ];
 export default routes;
