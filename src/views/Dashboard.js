@@ -11,15 +11,12 @@ import {
   Table,
   Row,
   Col,
-  UncontrolledTooltip,
-  Modal,
-  ModalBody,
-  Container,
-  ModalHeader
+  Container
 } from "reactstrap";
-
-import axios from "axios";
+import Modal from "react-modal";
 import _ from "lodash";
+
+import {ContainerModal, ContentModal, Close} from "./styles.dashboard";
 
 import api from "../api";
 
@@ -29,7 +26,7 @@ const Dashboard = (props) => {
   const [loading, setLoading] = useState(false);
   const [text, setText] = useState("");
   const [textSuggestions, setTextSuggestions] = useState("");
-  const [isModal, isSetModal] = useState(false);
+  const [isModal, isSetModal] = useState(true);
 
   const getInterests = async () => {
     setLoading(true)
@@ -137,11 +134,14 @@ const Dashboard = (props) => {
             </Col>
           </Row>
 
-          
-        </div>
-        <Modal isOpen={isModal} toggle={modalSuggestions} className={props.className} size="lg">
-            <ModalBody>
-                      <Table>
+          {isModal && (
+            <ContainerModal>
+                <Container>
+                  <ContentModal>
+                  <Close onClick={() => isSetModal(false)}>
+                    <i className="tim-icons icon-simple-remove" />
+                  </Close>
+                  <Table>
                         <thead>
                           <tr>
                             <td>Nome</td>
@@ -161,8 +161,14 @@ const Dashboard = (props) => {
                           ))}
                         </tbody>
                       </Table>
-            </ModalBody>
-          </Modal>
+                      </ContentModal>
+                </Container>
+          </ContainerModal>
+          )}
+
+          
+        </div>
+        
       </>
   )
 }
