@@ -66,7 +66,9 @@ const Dashboard = (props) => {
                     onChange={txt => setText(txt.target.value)}
                   />
                 </Col>
-                <Col md="6"><Button onClick={() => getInterests()} disabled={loading} color="primary" style={{height: 38, marginTop: 0}}>Vamos lá</Button></Col>
+                <Col md="6"><Button onClick={() => getInterests()} disabled={loading || !text.length} color="primary" style={{height: 38, marginTop: 0}}>
+                  {loading ? "Carregando..." : "Buscar interesses"}
+                  </Button></Col>
               </Row>
               <Card className="card-tasks">
                 <CardHeader>
